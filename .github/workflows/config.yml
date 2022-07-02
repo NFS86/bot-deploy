@@ -16,3 +16,13 @@ jobs:
           git clone https://NFS86:$GH_TOKEN@github.com/NFS-projects/NFS-UserBot nfsbot
           cd nfsbot
           sudo docker build . -t nfsbot
+      - name: Run Bot..
+        run: |
+          cd nfsbot
+          sudo docker run -p 80:80 nfsbot &
+          sleep 20m
+          git config --global --replace-all user.email jarbull86@gmail.com
+          git config --global --replace-all user.name NFS86
+          git add . -f
+          git commit -asm "NFS-UserBot: session update"
+          git push
