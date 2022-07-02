@@ -3,6 +3,7 @@ name: Bot Deploy
 on:
   workflow_dispatch:
   push:
+  self-hosted:
 
 jobs:
   procces:
