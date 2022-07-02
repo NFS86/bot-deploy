@@ -18,4 +18,5 @@ jobs:
       - name: Run Bot..
         run: |
           cd ~/home/nfsbot
-          sudo docker run -p 80:80 nfsbot && ls -al
+          sudo docker run nfsbot &
+          sleep 300m
