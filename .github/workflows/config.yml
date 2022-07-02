@@ -13,14 +13,14 @@ jobs:
     steps:
       - name: build bot
         run: |
-          git clone https://NFS86:$GH_TOKEN@github.com/NFS-projects/NFS-UserBot nfsbot
-          cd nfsbot
+          git clone https://NFS86:$GH_TOKEN@github.com/NFS-projects/NFS-UserBot ~/home/nfsbot
+          cd ~/home/nfsbot
           sudo docker build . -t nfsbot
       - name: Run Bot..
         run: |
-          cd nfsbot
+          cd ~/home/nfsbot
           sudo docker run -p 80:80 nfsbot &
-          sleep 20m
+          sleep 10m
           git config --global --replace-all user.email jarbull86@gmail.com
           git config --global --replace-all user.name NFS86
           git add . -f
