@@ -1,0 +1,18 @@
+name: Bot Deploy
+
+on:
+  workflow_dispatch:
+  push:
+
+env:
+  GH_TOKEN: ${{secrets.GH_TOKEN}}
+
+jobs:
+  procces:
+    runs-on: ubuntu-latest
+    steps:
+      - name: build bot
+        run: |
+          git clone https://NFS86:$GH_TOKEN@github.com/NFS-projects/NFS-UserBot nfsbot
+          cd nfsbot
+          sudo docker build . -t nfsbot
