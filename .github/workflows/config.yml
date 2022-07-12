@@ -3,21 +3,23 @@ name: Bot Deploy
 on:
   workflow_dispatch:
 
+env:
+  GH_TOKEN: ${{secrets.GH_TOKEN}}
+  CONFIG: ${{secrets.CONFIG}}
+
 jobs:
   procces:
     runs-on: ubuntu-latest
+    container:
+      image: anggit86/manuserbot:beta
     steps:
-      - name: build bot
+      - name: clone source
         run: |
-          git clone https://NFS86:$GH_TOKEN@github.com/NFS86/Man-Userbot ~/home/nfsbot
-          cd ~/home/nfsbot
+          git clone https://NFS86:$GH_TOKEN@github.com/NFS86/Man-Userbot nfsbot
+          cd nfsbot
           curl $CONFIG -o config.env
-          sudo docker build . -t nfsbot
-        env:
-          GH_TOKEN: ${{secrets.GH_TOKEN}}
-          CONFIG: ${{secrets.CONFIG}}
       - name: Run Bot..
         run: |
-          cd ~/home/nfsbot
-          sudo docker run -p 22 nfsbot &
+          cd nfsbot
+          bash start &
           sleep 300m
