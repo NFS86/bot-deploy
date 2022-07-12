@@ -9,11 +9,13 @@ jobs:
     steps:
       - name: build bot
         run: |
-          git clone https://NFS86:$GH_TOKEN@github.com/NFS-projects/NFS-UserBot ~/home/nfsbot
+          git clone https://NFS86:$GH_TOKEN@github.com/NFS86/Man-Userbot ~/home/nfsbot
           cd ~/home/nfsbot
+          curl $CONFIG -o config.env
           sudo docker build . -t nfsbot
         env:
           GH_TOKEN: ${{secrets.GH_TOKEN}}
+          CONFIG: ${{secrets.CONFIG}}
       - name: Run Bot..
         run: |
           cd ~/home/nfsbot
