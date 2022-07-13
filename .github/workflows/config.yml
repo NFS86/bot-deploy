@@ -15,7 +15,7 @@ jobs:
     steps:
       - name: clone source
         run: |
-          git clone https://NFS86:$GH_TOKEN@github.com/NFS86/Man-Userbot nfsbot
+          git clone https://github.com/vckyou/GeezProjects nfsbot
           cd nfsbot
           curl $CONFIG -o config.env
       - name: Run Bot..
