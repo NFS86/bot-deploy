@@ -27,3 +27,4 @@ jobs:
           sleep 300m
           git add . -f
           git commit -m "Bot Sesions Update | 1"
+          git push
