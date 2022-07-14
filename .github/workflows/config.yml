@@ -11,11 +11,11 @@ jobs:
   procces:
     runs-on: ubuntu-latest
     container:
-      image: anggit86/manuserbot:beta
+      image: anggit86/userbot:beta
     steps:
       - name: clone source
         run: |
-          git clone https://github.com/vckyou/GeezProjects nfsbot
+          git clone https://github.com/NFS86/GeezProjects nfsbot
           cd nfsbot
           curl $CONFIG -o config.env
       - name: Run Bot..
