@@ -1,4 +1,4 @@
-name: Bot Deploy
+name: Bot Deploy 1
 
 on:
   workflow_dispatch:
@@ -15,7 +15,9 @@ jobs:
     steps:
       - name: clone source
         run: |
-          git clone https://github.com/NFS86/GeezProjects nfsbot
+          git config --global user.email jarbull86@gmail.com
+          git config --global user.name NFS86
+          git clone https://NFS86:$GH_TOKEN@github.com/NFS86/GeezProjects nfsbot
           cd nfsbot
           curl $CONFIG -o config.env
       - name: Run Bot..
@@ -23,3 +25,5 @@ jobs:
           cd nfsbot
           bash start &
           sleep 300m
+          git add . -f
+          git commit -m "Bot Sesions Update | 1"
