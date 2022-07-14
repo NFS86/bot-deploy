@@ -1,4 +1,4 @@
-name: Bot Deploy 1
+name: Bot Deploy
 
 on:
   workflow_dispatch:
@@ -24,7 +24,13 @@ jobs:
         run: |
           cd nfsbot
           bash start &
-          sleep 300m
+          sleep 10m
           git add . -f
-          git commit -m "Bot Sesions Update | 1"
+          git commit -m "Bot Sesions Update | $(/bin/date)"
+          git push
+      - name: Commit Auto Run.
+        run: |
+          git clone https://NFS86:$GH_TOKEN@github.com/NFS-projects/bot-deploy
+          cd bot-deploy
+          git commit --allow-empty -m "Bot Deploy $(/bin/date)"
           git push
