@@ -25,6 +25,10 @@ jobs:
       - name: Run Bot..
         run: |
           cd nfsbot
+          export TZ="Asia/Jakarta"
+          echo
+          date
+          echo
           bash start &
           sleep 340m
           git add . -f
