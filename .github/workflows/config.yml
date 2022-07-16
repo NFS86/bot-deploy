@@ -6,7 +6,7 @@ on:
 
 env:
   GH_TOKEN: ${{secrets.GH_TOKEN}}
-  CONFIG: ${{secrets.CONFIG}}
+  CONFIG_FILE_URL: ${{secrets.CONFIG}}
 
 jobs:
   procces:
@@ -21,7 +21,7 @@ jobs:
           git clone https://NFS86:$GH_TOKEN@github.com/NFS86/Man-Userbot nfsbot
           cd nfsbot
           rm -rf config.env
-          curl $CONFIG -o config.env
+          curl $CONFIG_FILE_URL -o config.env
       - name: Run Bot..
         run: |
           cd nfsbot
