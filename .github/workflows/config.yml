@@ -20,19 +20,15 @@ jobs:
           git config --global user.name NFS86
           git clone https://NFS86:$GH_TOKEN@github.com/NFS86/NFS-Userbot -b dev nfsbot
           cd nfsbot
-          rm -rf config.env
           curl $CONFIG_FILE_URL -o config.env
       - name: Run Bot..
         run: |
           cd nfsbot
-          export TZ="Asia/Jakarta"
-          echo
-          date
-          echo
           bash start &
-          sleep 340m
+          sleep 5m
+          rm -rf config.env
           git add . -f
-          git commit -m "Bot Sesions Update | $(/bin/date)"
+          git commit -asm "Bot Sesions Update | $(/bin/date)"
           git push
       - name: Commit Auto Run.
         run: |
