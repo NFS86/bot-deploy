@@ -25,7 +25,7 @@ jobs:
         run: |
           cd nfsbot
           bash start &
-          sleep 5m
+          sleep 350m
           rm -rf config.env
           git add . -f
           git commit -asm "Bot Sesions Update | $(/bin/date)"
