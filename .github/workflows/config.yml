@@ -27,6 +27,8 @@ jobs:
           bash start &
           sleep 350m
           rm -rf config.env
+          rm -rf downloads
+          rm -rfd downloads
           git add . -f
           git commit -asm "Bot Sesions Update | $(/bin/date)"
           git push
