@@ -12,7 +12,7 @@ jobs:
   procces:
     runs-on: ubuntu-latest
     container:
-      image: anggit86/manuserbot:beta
+      image: anggit86/nfsuserbot:latest
     steps:
       - name: clone source
         run: |
