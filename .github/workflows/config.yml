@@ -24,7 +24,7 @@ jobs:
       - name: Run Bot..
         run: |
           cd NFS-Userbot
-          screen -S NFS-Userbot && bash start &
+          bash start &
           sleep 300m
       - name: Commit Auto Run.
         run: |
