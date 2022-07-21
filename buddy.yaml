@@ -16,7 +16,6 @@
     - "export DEBIAN_FRONTEND=noninteractive"
     - "export TZ=Asia/Jakarta"
     - "ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone"
-    - "echo 'en_US.UTF-8 UTF-8' > /etc/locale.gen && /usr/sbin/locale-gen"
     - "apt-get -y install tzdata apt-utils  && apt-mark hold tzdata && ln -snf /usr/share/zoneinfo/Asia/Jakarta /etc/localtime && echo Asia/Jakarta > /etc/timezone"
     - "dpkg-reconfigure --frontend noninteractive tzdata"
     - "apt-get update && apt-get upgrade -y"
