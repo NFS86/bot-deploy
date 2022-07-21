@@ -13,8 +13,8 @@
     docker_image_name: "library/ubuntu"
     docker_image_tag: "22.10"
     execute_commands:
+    - "export TZ=Asia/Jakarta"
     - "apt-get update && apt-get upgrade -y"
-    - "export TZ="Asia/Jakarta""
     - "ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone"
     - "&& echo 'en_US.UTF-8 UTF-8' > /etc/locale.gen && /usr/sbin/locale-gen"
     - "apt-get -y install tzdata && apt-mark hold tzdata && ln -snf /usr/share/zoneinfo/Asia/Jakarta /etc/localtime && echo Asia/Jakarta > /etc/timezone
