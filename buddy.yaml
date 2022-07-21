@@ -13,6 +13,7 @@
     docker_image_name: "library/ubuntu"
     docker_image_tag: "22.10"
     execute_commands:
+    - "export DEBIAN_FRONTEND=noninteractive"
     - "export TZ=Asia/Jakarta"
     - "apt-get update && apt-get upgrade -y"
     - "ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone"
