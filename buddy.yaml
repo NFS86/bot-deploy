@@ -10,8 +10,8 @@
   - action: "Deploy"
     type: "BUILD"
     working_directory: "/buddy/bot-deploy"
-    docker_image_name: "anggit86/nfsuserbot"
-    docker_image_tag: "latest"
+    docker_image_name: "library/ubuntu"
+    docker_image_tag: "22.10"
     execute_commands:
     - "apt-get update && apt-get upgrade -y"
     - "apt-get install git python3 python3-pip curl wget tree wget2 p7zip-full jq ffmpeg wget neofetch nodejs npm -y"
