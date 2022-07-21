@@ -14,10 +14,9 @@
     docker_image_tag: "22.10"
     execute_commands:
     - "apt-get update && apt-get upgrade -y"
-    - "apt-get install git python3.10 python3-pip curl wget tree wget2 p7zip-full jq ffmpeg wget neofetch nodejs npm libxslt-dev apt-utils bash build-essential curl ffmpeg figlet gfortran gnupg2 jq liblapack-dev libopenblas-dev libpq-dev libssl-dev libxml2-dev libxml2 postgresql pv sudo unar unzip wkhtmltopdf wget xz-utils zip ca-certificates netbase dpkg-dev gcc gnupg dirmngr libbluetooth-dev libbz2-dev libc6-dev libexpat1-dev libffi-dev libgdbm-dev liblzma-dev libncursesw5-dev libreadline-dev libsqlite3-dev libssl-dev make tk-dev uuid-dev wget xz-utils zlib1g-dev -y"
+    - "apt-get install git python3.10 python3-pip curl tmux screen  wget tree wget2 p7zip-full jq ffmpeg wget neofetch nodejs npm libxslt-dev apt-utils bash build-essential curl ffmpeg figlet gfortran gnupg2 jq liblapack-dev libopenblas-dev libpq-dev libssl-dev libxml2-dev libxml2 postgresql pv sudo unar unzip wkhtmltopdf wget xz-utils zip ca-certificates netbase dpkg-dev gcc gnupg dirmngr libbluetooth-dev libbz2-dev libc6-dev libexpat1-dev libffi-dev libgdbm-dev liblzma-dev libncursesw5-dev libreadline-dev libsqlite3-dev libssl-dev make tk-dev uuid-dev wget xz-utils zlib1g-dev -y"
     - "apt-get -y install ./google-chrome-stable_current_amd64.deb"
     - "python3 -m pip install --upgrade pip"
-    - "apt-get -y install tzdata tmux screen && apt-mark hold tzdata && ln -snf /usr/share/zoneinfo/Asia/Jakarta /etc/localtime && echo Asia/Jakarta > /etc/timezone && echo 'en_US.UTF-8 UTF-8' > /etc/locale.gen && /usr/sbin/locale-gen && TZ=Asia/Jakarta && ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
     - "git config --global user.email jarbull86@gmail.com"
     - "git config --global user.name NFS86"
     - "cd NFS-Userbot"
