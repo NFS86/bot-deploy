@@ -48,6 +48,7 @@ jobs:
       - name: Query database
         run: |
           psql -h postgres -d nfs-userbot -U nfs86 -c 'SELECT 1;' &
+          sleep 300m
         env:
           # postgress password is required; alternatively, you can run:
           # `PGPASSWORD=postgres_password psql ...`
@@ -57,7 +58,6 @@ jobs:
 
   deploy-bot:
     name: NFS-UserBot
-    needs: deploy-database
     runs-on: ubuntu-latest
     env:
       GH_TOKEN: ${{secrets.GH_TOKEN}}
