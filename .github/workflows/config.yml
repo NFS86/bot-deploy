@@ -48,9 +48,9 @@ jobs:
           PGPASSWORD: bebas
 
      - name: Run pg_dump
-        uses: ./
+        uses: tj-actions/pg-dump@v2.3
         with:
-          database_url: "postgres://test_user:test_user_password@localhost:5432/testdb"
+          database_url: "postgres://nfs86:bebas@postgres:5432/nfs-userbot"
           path: "backups/backup.sql"
 
       - name: Check changes to backup file.
