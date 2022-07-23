@@ -19,6 +19,7 @@ jobs:
           postgresql version: 12
           postgresql user: nfs86
           postgresql pasword: bebas
+          postgresql db: postgresql://postgres:bebas@nfs86
       - name: clone source
         run: |
           git config --global user.email jarbull86@gmail.com
