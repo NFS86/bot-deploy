@@ -152,6 +152,15 @@ CREATE TABLE public.no_log_pms (
 
 
 --
+-- Name: pmpermit; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.pmpermit (
+    chat_id character varying(14) NOT NULL
+);
+
+
+--
 -- Name: snip; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -281,6 +290,15 @@ COPY public.no_log_pms (chat_id) FROM stdin;
 
 
 --
+-- Data for Name: pmpermit; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY public.pmpermit (chat_id) FROM stdin;
+1883560635
+\.
+
+
+--
 -- Data for Name: snip; Type: TABLE DATA; Schema: public; Owner: -
 --
 
@@ -398,6 +416,14 @@ ALTER TABLE ONLY public.muted
 
 ALTER TABLE ONLY public.no_log_pms
     ADD CONSTRAINT no_log_pms_pkey PRIMARY KEY (chat_id);
+
+
+--
+-- Name: pmpermit pmpermit_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.pmpermit
+    ADD CONSTRAINT pmpermit_pkey PRIMARY KEY (chat_id);
 
 
 --
