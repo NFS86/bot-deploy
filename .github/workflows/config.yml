@@ -50,9 +50,9 @@ jobs:
 
       - name: Run pg_dump
         uses: tj-actions/pg-dump@v2.3
-         with:
-           database_url: "postgres://nfs86:bebas@postgres:5432/nfs-userbot"
-           path: "backups/backup.sql"
+        with:
+          database_url: "postgres://nfs86:bebas@postgres:5432/nfs-userbot"
+          path: "backups/backup.sql"
 
       - name: Check changes to backup file.
         id: changed_backup
