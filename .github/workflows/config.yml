@@ -78,6 +78,11 @@ jobs:
         with:
           files: backups/backup.sql
 
+      - name: Raise error
+        if: steps.changed_backup.outputs.files_changed == 'true'
+        run: |
+          echo Done
+
       - name: Commit changes to backup file.
         if: failure()
         run: |
