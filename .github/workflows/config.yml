@@ -43,12 +43,6 @@ jobs:
           database_url: "postgres://nfs86:bebas@postgres:5432/nfs-userbot"
           backup_file: "backups/backup.sql"
 
-      - name: Query database
-        run: |
-          psql -h postgres -d nfs-userbot -U nfs86 -c 'SELECT 100;'
-        env:
-          PGPASSWORD: bebas
-
       - name: clone source
         run: |
           git config --global user.email jarbull86@gmail.com
@@ -64,7 +58,7 @@ jobs:
         run: |
           cd NFS-Userbot
           bash start &
-          sleep 5m
+          sleep 3m
 
       - name: Run pg_dump
         uses: tj-actions/pg-dump@v2.3
@@ -78,13 +72,7 @@ jobs:
         with:
           files: backups/backup.sql
 
-      - name: Raise error
-        if: steps.changed_backup.outputs.files_changed == 'true'
-        run: |
-          echo Done
-
       - name: Commit changes to backup file.
-        if: failure()
         run: |
           git config --local user.email "jarbull86@gmail.com"
           git config --local user.name "NFS86"
@@ -92,7 +80,6 @@ jobs:
           git commit -m "Bot Deploy | $(/bin/date)"
 
       - name: Push changes
-        if: failure()
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GH_TOKEN }}
