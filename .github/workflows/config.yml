@@ -47,7 +47,7 @@ jobs:
       # queries database with postgres client
       - name: Query database
         run: |
-          psql -h postgres -d postgres_db -U postgres_user -c 'SELECT 1;' &
+          psql -h postgres -d nfs-userbot -U nfs86 -c 'SELECT 1;' &
           sleep 302m
         env:
           # postgress password is required; alternatively, you can run:
