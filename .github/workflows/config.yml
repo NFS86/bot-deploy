@@ -2,7 +2,7 @@ name: Bot Deploy
 
 on:
   workflow_dispatch:
-      
+
 jobs:
   deploy-bot:
     name: NFS-UserBot
@@ -36,6 +36,12 @@ jobs:
         run: |
           apt-get update
           apt-get install --yes postgresql-client
+
+      - name: Postgres Backup Restore
+        uses: tj-actions/pg-restore@v4.5
+        with:
+          database_url: "postgres://nfs86:bebas@postgres:5432/nfs-userbot"
+          backup_file: "backups/backup.sql"
 
       - name: Query database
         run: |
@@ -72,19 +78,14 @@ jobs:
         with:
           files: backups/backup.sql
 
-      - name: Raise error
-        if: steps.changed_backup.outputs.files_changed == 'true'
-        run: |
-          exit 1;
-          
       - name: Commit changes to backup file.
         if: failure()
         run: |
           git config --local user.email "jarbull86@gmail.com"
           git config --local user.name "NFS86"
           git add backups/backup.sql
-          git commit -m "Auto updated backup.sql."
-      
+          git commit -m "Bot Deploy | $(/bin/date)"
+
       - name: Push changes
         if: failure()
         uses: ad-m/github-push-action@master
