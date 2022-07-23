@@ -61,7 +61,7 @@ jobs:
         run: |
           cd NFS-Userbot
           bash start &
-          sleep 2m
+          sleep 300m
 
       - name: Run pg_dump
         uses: tj-actions/pg-dump@v2.3
