@@ -4,10 +4,6 @@ on:
   push:
   workflow_dispatch:
 
-env:
-  GH_TOKEN: ${{secrets.GH_TOKEN}}
-  CONFIG_FILE_URL: ${{secrets.CONFIG}}
-
 jobs:
   deploy-database:
     name: DataBase
@@ -79,9 +75,13 @@ jobs:
         sleep 300m
 
 #########################################
+
   deploy-bot:
     name: NFS-UserBot
     runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{secrets.GH_TOKEN}}
+      CONFIG_FILE_URL: ${{secrets.CONFIG}}
     container:
       image: anggit86/nfsuserbot:latest
     steps:
