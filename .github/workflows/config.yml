@@ -24,7 +24,6 @@ jobs:
           POSTGRES_PASSWORD: bebas
           POSTGRES_PORT: 5432
           POSTGRES_USER: nfs86
-          POSTGRES_HOST: action
         ports:
           # maps tcp port 5432 on service container to the host
           - 5432:5432
@@ -44,9 +43,5 @@ jobs:
       # queries database with postgres client
       - name: Query database
         run: |
-          psql -h action -d nfs-userbot -U nfs86 -c 'SELECT 2;' &
+          PGPASSWORD: bebas psql -h nfs86 -U postgres -p 5432 -d nfs-userbot &
           sleep 300m
-        env:
-          # postgress password is required; alternatively, you can run:
-          # `PGPASSWORD=postgres_password psql ...`
-          PGPASSWORD: bebas
