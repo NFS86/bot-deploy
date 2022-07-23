@@ -8,72 +8,50 @@ jobs:
   deploy-database:
     name: DataBase
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        ruby-version:
-        - '2.7.2'
-        node-version:
-        - '12.22'
-        database-name:
-        - nfs-userbot
-        database-password:
-        - bebas
-        database-user:
-        - nfs86
-        database-host:
-        - 127.0.0.1
-        database-port:
-        - 5432
+    # Docker Hub image that `postgres-job` executes in
+    container: node:latest
 
+    # service containers to run with `postgres-job`
     services:
+      # label used to access the service container
       postgres:
+        # Docker Hub image
         image: postgres:latest
+        # service environment variables
+        # `POSTGRES_HOST` is `postgres`
         env:
-          POSTGRES_DB: ${{ matrix.database-name }}
-          POSTGRES_USER: ${{ matrix.database-user }}
-          POSTGRES_PASSWORD: ${{ matrix.database-password }}
+          # optional (defaults to `postgres`)
+          POSTGRES_DB: postgres_db
+          # required
+          POSTGRES_PASSWORD: postgres_password
+          # optional (defaults to `5432`)
+          POSTGRES_PORT: 5432
+          # optional (defaults to `postgres`)
+          POSTGRES_USER: postgres_user
         ports:
+          # maps tcp port 5432 on service container to the host
           - 5432:5432
-        # Set health checks to wait until postgres has started
-        options:
+        # set health checks to wait until postgres has started
+        options: >-
           --health-cmd pg_isready
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
 
     steps:
-    - name: Check out Git Repository
-      uses: actions/checkout@v2
+      - name: Install PostgreSQL client
+        run: |
+          apt-get update
+          apt-get install --yes postgresql-client
 
-    - name: Set up Ruby, Bundler and Rails
-      uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: ${{ matrix.ruby-version }}
-        bundler-cache: true # runs 'bundle install' and caches installed gems automatically
-
-    - name: Set up Node
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-
-    - name: Install packages
-      run: |
-        yarn install --check-files
-
-    - name: Setup test database
-      env:
-        RAILS_ENV: test
-        DATABASE_NAME_TEST: ${{ matrix.database-name }}
-        DATABASE_USER: ${{ matrix.database-user }}
-        DATABASE_PASSWORD: ${{ matrix.database-password }}
-        DATABASE_HOST: ${{ matrix.database-host }}
-        DATABASE_PORT: ${{ matrix.database-port }}
-        POSTGRES_DB: ${{ matrix.database-name }}
-      run: |
-        bundle exec rails db:migrate
-        bundle exec rails db:seed &
-        sleep 300m
-
+      # queries database with postgres client
+      - name: Query database
+        run: psql -h postgres -d postgres_db -U postgres_user -c 'SELECT 1;'
+        env:
+          # postgress password is required; alternatively, you can run:
+          # `PGPASSWORD=postgres_password psql ...`
+          PGPASSWORD: postgres_password
+          
 #########################################
 
   deploy-bot:
