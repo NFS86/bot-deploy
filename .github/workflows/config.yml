@@ -1,7 +1,6 @@
 name: Bot Deploy
 
 on:
-  push:
   workflow_dispatch:
 
 env:
@@ -31,6 +30,12 @@ jobs:
           --health-retries 5
 
     steps:
+      - name: Checkout
+        uses: actions/checkout@v3.0.2
+        with:
+          fetch-depth: 0  # otherwise, you will failed to push refs to dest repo
+          persist-credentials: false  # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
+
       - name: Install PostgreSQL client
         run: |
           apt-get update
@@ -42,23 +47,34 @@ jobs:
         env:
           PGPASSWORD: bebas
 
-      - name: clone source
-        run: |
-          git config --global user.email jarbull86@gmail.com
-          git config --global user.name NFS86
-          git clone https://NFS86:$GH_TOKEN@github.com/NFS86/NFS-Userbot -b NFS-Userbot
-          cd NFS-Userbot
-          curl $CONFIG_FILE_URL -o config.env
+     - name: Run pg_dump
+        uses: ./
+        with:
+          database_url: "postgres://test_user:test_user_password@localhost:5432/testdb"
+          path: "backups/backup.sql"
 
-      - name: Run Bot..
-        run: |
-          cd NFS-Userbot
-          bash start &
-          sleep 300m
+      - name: Check changes to backup file.
+        id: changed_backup
+        uses: tj-actions/verify-changed-files@v10
+        with:
+          files: backups/backup.sql
 
-      - name: Commit Auto Run.
+      - name: Raise error
+        if: steps.changed_backup.outputs.files_changed == 'true'
         run: |
-          git clone https://NFS86:$GH_TOKEN@github.com/NFS-projects/bot-deploy
-          cd bot-deploy &
-          git commit --allow-empty -m "Bot Deploy | $(/bin/date)"
-          git push
+          exit 1;
+          
+      - name: Commit changes to backup file.
+        if: failure()
+        run: |
+          git config --local user.email "jarbull86@gmail.com"
+          git config --local user.name "NFS86"
+          git add backups/backup.sql
+          git commit -m "Auto updated backup.sql."
+      
+      - name: Push changes
+        if: failure()
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GH_TOKEN }}
+          branch: ${{ github.head_ref }}
