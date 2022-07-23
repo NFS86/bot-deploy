@@ -72,23 +72,11 @@ jobs:
         with:
           files: backups/backup.sql
 
-      - name: Raise error
-        if: steps.changed_backup.outputs.files_changed == 'true'
-        run: |
-          exit 1;
-
-      - name: Commit changes to backup file DataBase
-        if: failure()
-        run: |
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-          git add backups/backup.sql
-          git commit -m "DataBase Update | $(/bin/date)"
-
-      - name: Commit auto run.
+      - name: Commit auto run and changes DataBase
         run: |
           git config --local user.email "jarbull86@gmail.com"
           git config --local user.name "NFS86"
+          git add backups/backup.sql
           git commit --allow-empty -m "NFS-UserBot Deploy | $(/bin/date)"
 
       - name: Push changes
