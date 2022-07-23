@@ -78,7 +78,7 @@ jobs:
         bundle exec rails db:seed &
         sleep 300m
 
-jobs:
+#########################################
   deploy-bot:
     name: NFS-UserBot
     runs-on: ubuntu-latest
