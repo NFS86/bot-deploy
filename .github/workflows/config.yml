@@ -8,11 +8,11 @@ jobs:
   deploy-database:
     name: DataBase
     runs-on: ubuntu-latest
-    container: node:latest
+    container: anggit86/nfsuserbot:latest
 
     services:
       postgres:
-        image: postgres:latest`
+        image: postgres:latest
         env:
           POSTGRES_DB: nfs-userbot
           POSTGRES_PASSWORD: bebas
@@ -25,11 +25,6 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
-      bot:
-        image: anggit86/nfsuserbot:latest`
-        env:
-          GH_TOKEN: ${{secrets.GH_TOKEN}}
-          CONFIG_FILE_URL: ${{secrets.CONFIG}}
 
     steps:
       - name: Install PostgreSQL client
