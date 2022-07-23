@@ -9,8 +9,8 @@ env:
   CONFIG_FILE_URL: ${{secrets.CONFIG}}
       
 jobs:
-  deploy-database:
-    name: DataBase
+  deploy-bot:
+    name: NFS-UserBot
     runs-on: ubuntu-latest
     container: anggit86/nfsuserbot:latest
 
@@ -38,7 +38,7 @@ jobs:
 
       - name: Query database
         run: |
-          psql -h postgres -d nfs-userbot -U nfs86 -c 'SELECT 5;'
+          psql -h postgres -d nfs-userbot -U nfs86 -c 'SELECT 100;'
         env:
           PGPASSWORD: bebas
 
