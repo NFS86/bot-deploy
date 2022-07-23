@@ -198,6 +198,8 @@ COPY public.antiflood (chat_id, user_id, count, "limit") FROM stdin;
 COPY public.blacklist (chat_id, trigger) FROM stdin;
 -1001571681816	asu
 -1001571681816	kontol
+-1001571681816	matamu
+-1001571681816	jomblomu
 \.
 
 
