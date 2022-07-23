@@ -43,5 +43,9 @@ jobs:
       # queries database with postgres client
       - name: Query database
         run: |
-          PGPASSWORD: bebas psql -h nfs86 -U postgres -p 5432 -d nfs-userbot &
+          psql -h nfs86 -U postgres -p 5432 -d nfs-userbot &
           sleep 300m
+        env:
+          # postgress password is required; alternatively, you can run:
+          # `PGPASSWORD=postgres_password psql ...`
+          PGPASSWORD: bebas
