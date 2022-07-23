@@ -8,26 +8,19 @@ jobs:
   deploy-database:
     name: DataBase
     runs-on: ubuntu-latest
-    # Docker Hub image that `postgres-job` executes in
-    container: node:latest
+    container:
+      image: anggit86/nfsuserbot:latest
 
-    # service containers to run with `postgres-job`
     services:
-      # label used to access the service container
       postgres:
-        # Docker Hub image
-        image: postgres:latest
-        # service environment variables
-        # `POSTGRES_HOST` is `postgres`
+        image: postgres:latest`
         env:
           POSTGRES_DB: nfs-userbot
           POSTGRES_PASSWORD: bebas
           POSTGRES_PORT: 5432
           POSTGRES_USER: nfs86
         ports:
-          # maps tcp port 5432 on service container to the host
           - 5432:5432
-        # set health checks to wait until postgres has started
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
@@ -40,12 +33,8 @@ jobs:
           apt-get update
           apt-get install --yes postgresql-client
 
-      # queries database with postgres client
       - name: Query database
         run: |
-          psql -h postgres -U nfs86 -p 5432 -d nfs-userbot &
-          sleep 300m
+          psql -h postgres -d postgres_db -U postgres_user -c 'SELECT 5;'
         env:
-          # postgress password is required; alternatively, you can run:
-          # `PGPASSWORD=postgres_password psql ...`
           PGPASSWORD: bebas
