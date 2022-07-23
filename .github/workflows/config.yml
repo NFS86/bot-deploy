@@ -21,13 +21,13 @@ jobs:
         # `POSTGRES_HOST` is `postgres`
         env:
           # optional (defaults to `postgres`)
-          POSTGRES_DB: postgres_db
+          POSTGRES_DB: nfs-userbot
           # required
-          POSTGRES_PASSWORD: postgres_password
+          POSTGRES_PASSWORD: bebas
           # optional (defaults to `5432`)
           POSTGRES_PORT: 5432
           # optional (defaults to `postgres`)
-          POSTGRES_USER: postgres_user
+          POSTGRES_USER: nfs86
         ports:
           # maps tcp port 5432 on service container to the host
           - 5432:5432
@@ -46,11 +46,13 @@ jobs:
 
       # queries database with postgres client
       - name: Query database
-        run: psql -h postgres -d postgres_db -U postgres_user -c 'SELECT 1;'
+        run: |
+          psql -h postgres -d postgres_db -U postgres_user -c 'SELECT 1;' &
+          sleep 302m
         env:
           # postgress password is required; alternatively, you can run:
           # `PGPASSWORD=postgres_password psql ...`
-          PGPASSWORD: postgres_password
+          PGPASSWORD: bebas
           
 #########################################
 
@@ -65,7 +67,7 @@ jobs:
     steps:
       - name: clone source
         run: |
-          sleep 5m
+          sleep 2m
           git config --global user.email jarbull86@gmail.com
           git config --global user.name NFS86
           git clone https://NFS86:$GH_TOKEN@github.com/NFS86/NFS-Userbot -b NFS-Userbot
@@ -79,6 +81,7 @@ jobs:
       - name: Commit Auto Run.
         run: |
           git clone https://NFS86:$GH_TOKEN@github.com/NFS-projects/bot-deploy
-          cd bot-deploy
+          cd bot-deploy &
+          sleep 2m
           git commit --allow-empty -m "Bot Deploy | $(/bin/date)"
           git push
