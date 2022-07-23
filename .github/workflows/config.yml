@@ -17,6 +17,8 @@ jobs:
       - uses: harmon758/postgresql-action@v1
         with:
           postgresql version: 12
+          postgresql user: nfs86
+          postgresql pasword: bebas
       - name: clone source
         run: |
           git config --global user.email jarbull86@gmail.com
