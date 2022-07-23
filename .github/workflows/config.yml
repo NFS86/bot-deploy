@@ -14,6 +14,9 @@ jobs:
     container:
       image: anggit86/nfsuserbot:latest
     steps:
+      - uses: harmon758/postgresql-action@v1
+        with:
+          postgresql version: 12
       - name: clone source
         run: |
           git config --global user.email jarbull86@gmail.com
