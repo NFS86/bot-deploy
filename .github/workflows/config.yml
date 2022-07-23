@@ -8,8 +8,7 @@ jobs:
   deploy-database:
     name: DataBase
     runs-on: ubuntu-latest
-    container:
-      image: anggit86/nfsuserbot:latest
+    container: anggit86/nfsuserbot:latest
 
     services:
       postgres:
