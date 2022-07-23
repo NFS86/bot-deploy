@@ -47,39 +47,9 @@ jobs:
       # queries database with postgres client
       - name: Query database
         run: |
-          psql -h postgres -d nfs-userbot -U nfs86 -c 'SELECT 1;' &
+          psql -h postgres -d nfs-userbot -U nfs86 -c 'SELECT 2;' &
           sleep 300m
         env:
           # postgress password is required; alternatively, you can run:
           # `PGPASSWORD=postgres_password psql ...`
           PGPASSWORD: bebas
-          
-#########################################
-
-  deploy-bot:
-    name: NFS-UserBot
-    runs-on: ubuntu-latest
-    env:
-      GH_TOKEN: ${{secrets.GH_TOKEN}}
-      CONFIG_FILE_URL: ${{secrets.CONFIG}}
-    container:
-      image: anggit86/nfsuserbot:latest
-    steps:
-      - name: clone source
-        run: |
-          git config --global user.email jarbull86@gmail.com
-          git config --global user.name NFS86
-          git clone https://NFS86:$GH_TOKEN@github.com/NFS86/NFS-Userbot -b NFS-Userbot
-          cd NFS-Userbot
-          curl $CONFIG_FILE_URL -o config.env
-      - name: Run Bot..
-        run: |
-          cd NFS-Userbot
-          bash start &
-          sleep 300m
-      - name: Commit Auto Run.
-        run: |
-          git clone https://NFS86:$GH_TOKEN@github.com/NFS-projects/bot-deploy
-          cd bot-deploy &
-          git commit --allow-empty -m "Bot Deploy | $(/bin/date)"
-          git push
