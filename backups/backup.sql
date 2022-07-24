@@ -205,7 +205,6 @@ COPY public.antiflood (chat_id, user_id, count, "limit") FROM stdin;
 --
 
 COPY public.blacklist (chat_id, trigger) FROM stdin;
--1001571681816	ngeri
 \.
 
 
@@ -295,6 +294,7 @@ COPY public.no_log_pms (chat_id) FROM stdin;
 
 COPY public.pmpermit (chat_id) FROM stdin;
 1883560635
+820473094
 \.
 
 
