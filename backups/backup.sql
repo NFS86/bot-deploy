@@ -295,6 +295,7 @@ COPY public.no_log_pms (chat_id) FROM stdin;
 COPY public.pmpermit (chat_id) FROM stdin;
 1883560635
 820473094
+1441016790
 \.
 
 
