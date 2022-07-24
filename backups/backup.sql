@@ -205,6 +205,7 @@ COPY public.antiflood (chat_id, user_id, count, "limit") FROM stdin;
 --
 
 COPY public.blacklist (chat_id, trigger) FROM stdin;
+-1001560082201	@kurangkopiges
 \.
 
 
@@ -320,6 +321,7 @@ COPY public.tede_chatbot (chat_id) FROM stdin;
 --
 
 COPY public.welcome (chat_id, previous_welcome, reply, f_mesg_id) FROM stdin;
+-1001571681816	0	**Welcome** {mention} **to** {chatname}\n\n➠ **Full Name** : {fullname}\n➠ **Username** : {username}\n➠ **User ID.**      : {userid}\n\n\n{title}\n{count}\n{first}\n{last}\n{my_first}\n{my_fullname}\n{my_last}\n{my_mention}\n{my_username}	\N
 \.
 
 
