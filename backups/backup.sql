@@ -152,6 +152,18 @@ CREATE TABLE public.no_log_pms (
 
 
 --
+-- Name: notes; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.notes (
+    chat_id character varying(14) NOT NULL,
+    keyword text NOT NULL,
+    reply text,
+    f_mesg_id numeric
+);
+
+
+--
 -- Name: pmpermit; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -206,6 +218,7 @@ COPY public.antiflood (chat_id, user_id, count, "limit") FROM stdin;
 
 COPY public.blacklist (chat_id, trigger) FROM stdin;
 -1001560082201	@kurangkopiges
+-1001407718745	@kurangkopiges
 \.
 
 
@@ -286,6 +299,14 @@ COPY public.muted (chat_id, sender) FROM stdin;
 --
 
 COPY public.no_log_pms (chat_id) FROM stdin;
+\.
+
+
+--
+-- Data for Name: notes; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY public.notes (chat_id, keyword, reply, f_mesg_id) FROM stdin;
 \.
 
 
@@ -420,6 +441,14 @@ ALTER TABLE ONLY public.muted
 
 ALTER TABLE ONLY public.no_log_pms
     ADD CONSTRAINT no_log_pms_pkey PRIMARY KEY (chat_id);
+
+
+--
+-- Name: notes notes_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.notes
+    ADD CONSTRAINT notes_pkey PRIMARY KEY (chat_id, keyword);
 
 
 --
