@@ -267,6 +267,7 @@ COPY public.filters (chat_id, keyword, reply, f_mesg_id) FROM stdin;
 --
 
 COPY public.gban (chat_id, reason) FROM stdin;
+5497685380	
 \.
 
 
