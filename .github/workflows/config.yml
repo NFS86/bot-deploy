@@ -1,4 +1,4 @@
-name: Bot Deploy
+name: NFS-UserBot Deploy
 
 on:
   workflow_dispatch:
@@ -16,10 +16,10 @@ jobs:
       postgres:
         image: postgres:9.6.20
         env:
-          POSTGRES_DB: nfs-userbot
-          POSTGRES_PASSWORD: bebas
+          POSTGRES_DB: ${{secrets.POSTGRES_DB}}
+          POSTGRES_PASSWORD: ${{secrets.POSTGRES_PASSWORD}}
           POSTGRES_PORT: 5432
-          POSTGRES_USER: nfs86
+          POSTGRES_USER: ${{secrets.POSTGRES_USER}}
         ports:
           - 5432:5432
         options: >-
@@ -35,15 +35,10 @@ jobs:
           fetch-depth: 0  # otherwise, you will failed to push refs to dest repo
           persist-credentials: false  # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
 
-      - name: Install PostgreSQL client
-        run: |
-          apt-get update
-          apt-get install --yes postgresql-client
-
       - name: Postgres Backup Restore
         uses: tj-actions/pg-restore@v4.5
         with:
-          database_url: "postgres://nfs86:bebas@postgres:5432/nfs-userbot"
+          database_url: "${{ secrets.DB_URL }}"
           backup_file: "backups/backup.sql"
 
       - name: clone source
@@ -66,7 +61,7 @@ jobs:
       - name: Run pg_dump
         uses: tj-actions/pg-dump@v2.3
         with:
-          database_url: "postgres://nfs86:bebas@postgres:5432/nfs-userbot"
+          database_url: "${{ secrets.DB_URL }}"
           path: "backups/backup.sql"
 
       - name: Check changes to backup file.
