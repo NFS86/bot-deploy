@@ -316,6 +316,7 @@ COPY public.notes (chat_id, keyword, reply, f_mesg_id) FROM stdin;
 --
 
 COPY public.pmpermit (chat_id) FROM stdin;
+1674898916
 \.
 
 
