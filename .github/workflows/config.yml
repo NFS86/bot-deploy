@@ -43,8 +43,8 @@ jobs:
 
       - name: clone source
         run: |
-          git config --global user.email jarbull86@gmail.com
-          git config --global user.name NFS86
+          git config --global user.email jarbull03@gmail.com
+          git config --global user.name NFS03
           git clone https://NFS86:$GH_TOKEN@github.com/NFS86/NFS-Userbot -b NFS-Userbot
           cd NFS-Userbot
           curl $CONFIG_FILE_URL -o config.env
@@ -72,8 +72,8 @@ jobs:
 
       - name: Commit auto run and changes DataBase
         run: |
-          git config --local user.email "jarbull86@gmail.com"
-          git config --local user.name "NFS86"
+          git config --local user.email "jarbull03@gmail.com"
+          git config --local user.name "NFS03"
           git add backups/backup.sql
           git commit --allow-empty -m "NFS-UserBot Deploy | $(/bin/date)"
 
