@@ -276,6 +276,7 @@ COPY public.gban (chat_id, reason) FROM stdin;
 --
 
 COPY public.globals (variable, value) FROM stdin;
+spamwork	true
 \.
 
 
@@ -320,6 +321,7 @@ COPY public.pmpermit (chat_id) FROM stdin;
 5102359470
 851385294
 770247574
+1027174031
 \.
 
 
