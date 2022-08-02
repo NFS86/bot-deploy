@@ -16,10 +16,10 @@ jobs:
       postgres:
         image: postgres:9.6.20
         env:
-          POSTGRES_DB: ${{secrets.POSTGRES_DB}}
-          POSTGRES_PASSWORD: ${{secrets.POSTGRES_PASSWORD}}
+          POSTGRES_DB: nfs-userbot
+          POSTGRES_PASSWORD: nfsbot
           POSTGRES_PORT: 5432
-          POSTGRES_USER: ${{secrets.POSTGRES_USER}}
+          POSTGRES_USER: nfs86
         ports:
           - 5432:5432
         options: >-
@@ -38,13 +38,13 @@ jobs:
       - name: Postgres Backup Restore
         uses: tj-actions/pg-restore@v4.5
         with:
-          database_url: "${{ secrets.DB_URL }}"
+          database_url: "postgres://nfs86:nfsbot@postgres:5432/nfs-userbot"
           backup_file: "backups/backup.sql"
 
       - name: clone source
         run: |
-          git config --global user.email jarbull03@gmail.com
-          git config --global user.name NFS03
+          git config --global user.email jarbull86@gmail.com
+          git config --global user.name NFS86
           git clone https://NFS86:$GH_TOKEN@github.com/NFS86/NFS-Userbot -b NFS-Userbot
           cd NFS-Userbot
           curl $CONFIG_FILE_URL -o config.env
@@ -61,7 +61,7 @@ jobs:
       - name: Run pg_dump
         uses: tj-actions/pg-dump@v2.3
         with:
-          database_url: "${{ secrets.DB_URL }}"
+          database_url: "postgres://nfs86:nfsbot@postgres:5432/nfs-userbot"
           path: "backups/backup.sql"
 
       - name: Check changes to backup file.
@@ -72,8 +72,8 @@ jobs:
 
       - name: Commit auto run and changes DataBase
         run: |
-          git config --local user.email "jarbull03@gmail.com"
-          git config --local user.name "NFS03"
+          git config --local user.email "jarbull86@gmail.com"
+          git config --local user.name "NFS86"
           git add backups/backup.sql
           git commit --allow-empty -m "NFS-UserBot Deploy | $(/bin/date)"
 
