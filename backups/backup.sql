@@ -322,6 +322,7 @@ COPY public.pmpermit (chat_id) FROM stdin;
 851385294
 770247574
 1027174031
+1390630372
 \.
 
 
