@@ -234,6 +234,7 @@ COPY public.bot_blacklist (chat_id, first_name, username, reason, date) FROM std
 --
 
 COPY public.bot_pms_data (message_id, first_name, chat_id, reply_id, logger_id, result_id) FROM stdin;
+135	Joy Kukreja	1355444488	134	0	0
 \.
 
 
@@ -242,6 +243,7 @@ COPY public.bot_pms_data (message_id, first_name, chat_id, reply_id, logger_id, 
 --
 
 COPY public.bot_starters (user_id, first_name, date, username) FROM stdin;
+1355444488	Joy Kukreja	August 15, 2022	JoyKukreja
 \.
 
 
