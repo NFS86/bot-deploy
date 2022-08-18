@@ -320,6 +320,8 @@ COPY public.notes (chat_id, keyword, reply, f_mesg_id) FROM stdin;
 COPY public.pmpermit (chat_id) FROM stdin;
 851385294
 5419488229
+770247574
+1471690716
 \.
 
 
