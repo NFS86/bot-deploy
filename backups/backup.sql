@@ -82,6 +82,7 @@ CREATE TABLE public.pmpermit (
 --
 
 COPY public.afk (user_id, is_afk, reason) FROM stdin;
+0	f	
 \.
 
 
@@ -125,6 +126,7 @@ COPY public.no_log_pms (chat_id) FROM stdin;
 
 COPY public.pmpermit (chat_id) FROM stdin;
 1471690716
+770247574
 \.
 
 
