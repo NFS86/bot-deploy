@@ -45,7 +45,7 @@ jobs:
         run: |
           git config --global user.email jarbull86@gmail.com
           git config --global user.name NFS86
-          git clone https://NFS86:$GH_TOKEN@github.com/NFS86/NFS-Userbot -b NFS-Userbot
+          git clone https://NFS86:$GH_TOKEN@github.com/NFS86/PyroMan -b NFS-Userbot
           cd NFS-Userbot
           curl $CONFIG_FILE_URL -o config.env
         env:
