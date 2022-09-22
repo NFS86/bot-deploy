@@ -99,8 +99,8 @@ COPY public.gban (sender) FROM stdin;
 --
 
 COPY public.globals (variable, value) FROM stdin;
-unapproved_msg	╔════════════════════╗\n     ⛑ 𝗔𝗧𝗧𝗘𝗡𝗧𝗜𝗢𝗡 𝗣𝗟𝗘𝗔𝗦𝗘 ⛑\n╚════════════════════╝\n🇮🇩\n• Saya belum menyetujui anda untuk PM.\n• Tunggu sampai saya menyetujui PM anda.\n• Jangan Spam Chat atau anda akan otomatis diblokir.\n🇺🇸\n• I have not approved you to PM.\n• Wait until I approve your PM.\n• Don't Spam Chat or you will be automatically blocked.\n🇮🇳\n• मैंने आपको पीएम के लिए मंजूरी नहीं दी है.\n• रुको जब तक मैं आपके पीएम को मंजूरी नहीं देता.\n• चैट को स्पैम न करें या आप अपने आप ब्लॉक हो जाएंगे.\n🇯🇵\n• 私はあなたをPMに承認していません.\n• 私があなたのPMを承認するまで待ちます.\n• チャットをスパムしないでください。そうしないと、自動的にブロックされます.\n🇨🇳\n• 我还没有批准你PM\n• 等我批准你的 PM\n• 不要垃圾邮件聊天，否则您将被自动阻止\n🇷🇺\n• Я не одобрил вас в личку\n• Подождите, пока я не одобрю ваш PM\n• Не спамьте в чате, иначе вы будете автоматически заблокированы\n╔════════════════════╗\n    𝗣𝗲𝘀𝗮𝗻 𝗢𝘁𝗼𝗺𝗮𝘁𝗶𝘀 𝗕𝘆 -𝗨𝘀𝗲𝗿𝗕𝗼𝘁\n╚════════════════════╝
 PM_LIMIT	3
+unapproved_msg	╔════════════════════╗\n     ⛑ 𝗔𝗧𝗧𝗘𝗡𝗧𝗜𝗢𝗡 𝗣𝗟𝗘𝗔𝗦𝗘 ⛑\n╚════════════════════╝\n🇮🇩\n• Saya belum menyetujui anda untuk PM.\n• Tunggu sampai saya menyetujui PM anda.\n• Jangan Spam Chat atau anda akan otomatis diblokir.\n🇺🇸\n• I have not approved you to PM.\n• Wait until I approve your PM.\n• Don't Spam Chat or you will be automatically blocked.\n🇮🇳\n• मैंने आपको पीएम के लिए मंजूरी नहीं दी है.\n• रुको जब तक मैं आपके पीएम को मंजूरी नहीं देता.\n• चैट को स्पैम न करें या आप अपने आप ब्लॉक हो जाएंगे.\n🇯🇵\n• 私はあなたをPMに承認していません.\n• 私があなたのPMを承認するまで待ちます.\n• チャットをスパムしないでください。そうしないと、自動的にブロックされます.\n🇨🇳\n• 我还没有批准你PM\n• 等我批准你的 PM\n• 不要垃圾邮件聊天，否则您将被自动阻止\n🇷🇺\n• Я не одобрил вас в личку\n• Подождите, пока я не одобрю ваш PM\n• Не спамьте в чате, иначе вы будете автоматически заблокированы\n╔════════════════════╗\n    𝗣𝗲𝘀𝗮𝗻 𝗢𝘁𝗼𝗺𝗮𝘁𝗶𝘀 𝗕𝘆 -𝗨𝘀𝗲𝗿𝗕𝗼𝘁\n╚════════════════════╝
 \.
 
 
