@@ -82,7 +82,7 @@ CREATE TABLE public.pmpermit (
 --
 
 COPY public.afk (user_id, is_afk, reason) FROM stdin;
-0	f	
+0	t	maaf bro saya sedang offline. Silahkan tinggalkan pesan 😋
 \.
 
 
