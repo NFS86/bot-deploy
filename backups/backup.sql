@@ -118,7 +118,6 @@ COPY public.gmute (sender) FROM stdin;
 --
 
 COPY public.no_log_pms (chat_id) FROM stdin;
--1001677139908
 \.
 
 
